@@ -1,3 +1,4 @@
+from csv import DictReader
 class Item:
     """
     Класс для представления товара в магазине.
@@ -13,7 +14,7 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
 
@@ -31,3 +32,15 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price = self.price * Item.pay_rate
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        self.__name = name
+        if len(name) > 10:
+            print("Длинна более 10 символов, повторите попытку")
+
+

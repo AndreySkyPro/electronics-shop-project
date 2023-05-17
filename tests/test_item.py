@@ -18,3 +18,12 @@ def test_apply_discount(testing_item):
     testing_item.apply_discount()
     assert testing_item.price == 5000
 
+
+def test_self_name(testing_item):
+    assert testing_item.name == 'Смартфон'
+    testing_item.name = 'Телефон'
+    assert testing_item.name == 'Телефон'
+
+
+def test_len_name(testing_item):
+    assert len(testing_item.name) <= 10
