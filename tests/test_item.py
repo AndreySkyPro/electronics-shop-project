@@ -20,10 +20,21 @@ def test_apply_discount(testing_item):
 
 
 def test_self_name(testing_item):
+    """Проверяем установку имени и возможность его изменения"""
     assert testing_item.name == 'Смартфон'
     testing_item.name = 'Телефон'
     assert testing_item.name == 'Телефон'
 
 
 def test_len_name(testing_item):
+    """Тест проверки длины имени"""
     assert len(testing_item.name) <= 10
+    testing_item.name = "Супертелефон"
+    assert testing_item.name == 'Смартфон'
+
+
+def test_string_to_number():
+    """Тест преобразования строки в число """
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('5.0') == 5
+    assert Item.string_to_number('5.5') == 5
