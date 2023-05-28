@@ -1,10 +1,16 @@
 import pytest
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
 def testing_item():
     return Item("Смартфон", 10000, 20)
+
+
+@pytest.fixture
+def testing_phone1():
+    return Phone("Samsung", 20000, 5, 2)
 
 
 def test_calculate_total_price(testing_item):
@@ -39,10 +45,17 @@ def test_string_to_number():
     assert Item.string_to_number('5.0') == 5
     assert Item.string_to_number('5.5') == 5
 
+
 def test__repr__(testing_item):
     """Тест для магического метода __repr__"""
     assert repr(testing_item) == "Item('Смартфон', 10000, 20)"
 
+
 def test___str__(testing_item):
     """Тест для магического метода __str__"""
     assert str(testing_item) == 'Смартфон'
+
+
+def test___add__(testing_item, testing_phone1):
+    """Тест для магического метода __add__"""
+    assert testing_item + testing_phone1 == 25
